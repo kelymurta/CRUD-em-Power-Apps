@@ -1,0 +1,365 @@
+read As screen:
+    OnVisible: =ClearCollect(SelectedItemsCollection, [])
+
+    Container1_2 As groupContainer.manualLayoutContainer:
+        BorderThickness: =2
+        Height: =93
+        Width: =1366
+        ZIndex: =2
+
+        Image2_2 As image:
+            Height: =92
+            Image: ='Soluções (1)'
+            X: =1238
+            ZIndex: =1
+
+    Container2_2 As groupContainer.manualLayoutContainer:
+        Height: =87
+        Width: =1366
+        Y: =680
+        ZIndex: =3
+
+    Container3_2 As groupContainer.horizontalAutoLayoutContainer:
+        Height: =585
+        LayoutMode: =LayoutMode.Auto
+        Width: =1366
+        Y: =95
+        ZIndex: =4
+
+        Container4_2 As groupContainer.horizontalAutoLayoutContainer:
+            FillPortions: =0
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =tamanho
+            ZIndex: =1
+
+            Container6_2 As groupContainer.manualLayoutContainer:
+                BorderThickness: =2
+                FillPortions: =0
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                Width: =tamanho
+                ZIndex: =1
+
+                Container8_2 As groupContainer.manualLayoutContainer:
+                    BorderThickness: =2
+                    Height: =120
+                    Visible: |
+                        =varPerfilexcluir
+                    Width: =200
+                    Y: =336
+                    ZIndex: =3
+
+                    Button3_2 As button:
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =120
+                        OnSelect: =Navigate(delete)
+                        Size: =23
+                        Text: ="Excluir um usuário"
+                        Width: =200
+                        ZIndex: =1
+
+                Container9_2 As groupContainer.manualLayoutContainer:
+                    BorderThickness: =2
+                    Height: =120
+                    Width: =200
+                    Y: =216
+                    ZIndex: =4
+
+                    Button2_2 As button:
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =120
+                        OnSelect: =Navigate(update)
+                        Size: =23
+                        Text: ="Editar registros"
+                        Width: =200
+                        ZIndex: =1
+
+                Container11_2 As groupContainer.manualLayoutContainer:
+                    BorderThickness: =2
+                    Height: =120
+                    Width: =200
+                    Y: =96
+                    ZIndex: =5
+
+                    Button1_2 As button:
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =120
+                        OnSelect: =Navigate(create)
+                        Size: =23
+                        Text: ="Cadastrar um usuário"
+                        Visible: |
+                            =varPerfilcadastro
+                        Width: =200
+                        ZIndex: =1
+
+                Container12_2 As groupContainer.manualLayoutContainer:
+                    BorderThickness: =2
+                    Height: =95
+                    Width: =200
+                    ZIndex: =6
+
+                    Label2_2 As label:
+                        FontWeight: =FontWeight.Semibold
+                        Height: =49
+                        OnSelect: |-
+                            =UpdateContext({tamanho:0})
+                        Size: =25
+                        Text: ="Menu"
+                        Width: =120
+                        X: =76
+                        Y: =18
+                        ZIndex: =1
+
+                    Icon1_2 As icon.Hamburger:
+                        Height: =49
+                        Icon: =Icon.Hamburger
+                        OnSelect: |-
+                            =UpdateContext({tamanho:0})
+                        Width: =56
+                        X: =20
+                        Y: =18
+                        ZIndex: =2
+
+        Container5_2 As groupContainer.verticalAutoLayoutContainer:
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =2
+
+            Container7_2 As groupContainer.manualLayoutContainer:
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                ZIndex: =1
+
+                Icon2_2 As icon.Hamburger:
+                    Height: =49
+                    Icon: =Icon.Hamburger
+                    OnSelect: |-
+                        =UpdateContext({tamanho:200})
+                    Visible: =If(tamanho=200,false,true)
+                    Width: =54
+                    X: =20
+                    Y: =18
+                    ZIndex: =1
+
+                TextInput1 As text:
+                    Default: =""
+                    Height: =66
+                    Size: =20
+                    Width: =1062
+                    X: =157
+                    Y: =134
+                    ZIndex: =3
+
+                Label4 As label:
+                    BorderThickness: =2
+                    Fill: =RGBA(215, 223, 240, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =65
+                    Size: =20
+                    Text: |-
+                        ="Digite o e-mail do registro que deseja ver:"
+                    Width: =1062
+                    X: =157
+                    Y: =67
+                    ZIndex: =4
+
+                Icon3 As icon.Search:
+                    Height: =47
+                    Icon: =Icon.Search
+                    Width: =48
+                    X: =1148
+                    Y: =143
+                    ZIndex: =5
+
+                Label10_1 As label:
+                    BorderThickness: =2
+                    Height: =45
+                    Text: =""
+                    Width: =1063
+                    X: =157
+                    Y: =238
+                    ZIndex: =6
+
+                Button11_6 As button:
+                    DisabledBorderColor: =RGBA(50, 86, 160, 1)
+                    DisabledColor: =RGBA(0, 0, 0, 1)
+                    DisabledFill: =RGBA(175, 191, 224, 1)
+                    DisplayMode: =DisplayMode.Disabled
+                    Fill: =RGBA(50, 86, 160, 1)
+                    Text: ="Nome"
+                    Width: =106
+                    X: =168
+                    Y: =241
+                    ZIndex: =7
+
+                Button11_7 As button:
+                    BorderColor: |
+                        =ColorFade(Self.Fill, -15%)
+                    DisabledBorderColor: =RGBA(56, 96, 178, 1)
+                    DisabledColor: =RGBA(0, 0, 0, 1)
+                    DisabledFill: =RGBA(175, 191, 224, 1)
+                    DisplayMode: =DisplayMode.Disabled
+                    Text: ="E-mail"
+                    Width: =106
+                    X: =369
+                    Y: =241
+                    ZIndex: =8
+
+                Button11_8 As button:
+                    DisabledBorderColor: =RGBA(56, 96, 178, 1)
+                    DisabledColor: =RGBA(0, 0, 0, 1)
+                    DisabledFill: =RGBA(175, 191, 224, 1)
+                    DisplayMode: =DisplayMode.Disabled
+                    Text: ="Função "
+                    Width: =106
+                    X: =599
+                    Y: =241
+                    ZIndex: =9
+
+                Button11_9 As button:
+                    DisabledBorderColor: =RGBA(56, 96, 178, 1)
+                    DisabledColor: =RGBA(0, 0, 0, 1)
+                    DisabledFill: =RGBA(175, 191, 224, 1)
+                    DisplayMode: =DisplayMode.Disabled
+                    Text: ="Cargo"
+                    Width: =106
+                    X: =739
+                    Y: =241
+                    ZIndex: =10
+
+                Button11_10 As button:
+                    DisabledBorderColor: =RGBA(56, 96, 178, 1)
+                    DisabledColor: =RGBA(0, 0, 0, 1)
+                    DisabledFill: =RGBA(175, 191, 224, 1)
+                    DisplayMode: =DisplayMode.Disabled
+                    Text: ="CPF"
+                    Width: =106
+                    X: =902
+                    Y: =241
+                    ZIndex: =11
+
+                Button11_11 As button:
+                    DisabledBorderColor: =RGBA(56, 96, 178, 1)
+                    DisabledColor: =RGBA(0, 0, 0, 1)
+                    DisabledFill: =RGBA(175, 191, 224, 1)
+                    DisplayMode: =DisplayMode.Disabled
+                    Text: ="Telefone"
+                    Width: =106
+                    X: =1069
+                    Y: =241
+                    ZIndex: =12
+
+                "Gallery5_4 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                    BorderThickness: =2
+                    DelayItemLoading: =true
+                    Height: =274
+                    Items: =Filter(Cadastro_Kely, TextInput1.Text = EMAIL)
+                    Layout: =Layout.Vertical
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TemplatePadding: =0
+                    TemplateSize: =70
+                    Width: =1063
+                    X: =156
+                    Y: =283
+                    ZIndex: =13
+
+                    Button10_2 As button:
+                        Fill: =RGBA(215, 223, 240, 1)
+                        Text: =""
+                        Width: =1062
+                        Y: =14
+                        ZIndex: =1
+
+                    Title5_4 As label:
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =25
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =ThisItem.Título
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =98
+                        X: =16
+                        Y: =22
+                        ZIndex: =2
+
+                    Subtitle4_4 As label:
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =25
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =ThisItem.EMAIL
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =266
+                        X: =139
+                        Y: =22
+                        ZIndex: =3
+
+                    Body1_5 As label:
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =25
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =ThisItem.FUNCAO
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =93
+                        X: =471
+                        Y: =22
+                        ZIndex: =4
+
+                    Label2_12 As label:
+                        Height: =42
+                        OnSelect: =Select(Parent)
+                        Text: =ThisItem.CARGO_EXERCIDO
+                        Width: =124
+                        X: =596
+                        Y: =12
+                        ZIndex: =5
+
+                    Label2_13 As label:
+                        OnSelect: =Select(Parent)
+                        Text: =ThisItem.CPF
+                        Width: =142
+                        X: =740
+                        Y: =14
+                        ZIndex: =7
+
+                    Label2_14 As label:
+                        OnSelect: =Select(Parent)
+                        Text: =ThisItem.TELEFONE
+                        Width: =140
+                        X: =922
+                        Y: =14
+                        ZIndex: =8
+
+    Icon7 As icon.DocumentPDF:
+        Icon: =Icon.DocumentPDF
+        OnSelect: =Collect(ColecaoPDF,Filter(Cadastro_Kely, TextInput1.Text = EMAIL)); geradoPDF.Run(JSON(ColecaoPDF, JSONFormat.IgnoreBinaryData & JSONFormat.IgnoreUnsupportedTypes));Clear(ColecaoPDF)
+        X: =1260
+        Y: =582
+        ZIndex: =5
+
+    Label2 As label:
+        FontWeight: =FontWeight.Semibold
+        Size: =18
+        Text: ="Exportar"
+        Width: =123
+        X: =1230
+        Y: =542
+        ZIndex: =6
+

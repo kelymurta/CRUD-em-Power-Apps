@@ -1,0 +1,159 @@
+menu As screen:
+    OnVisible: |-
+        =
+        Set(funcoesUsuario, Filter(Cadastro_Kely, EMAIL = User().Email).FUNCAO);
+        
+        If(
+            !IsBlank(LookUp(funcoesUsuario, FUNCAO = "exclusor")),
+            Set(varPerfilexcluir, true),
+            Set(varPerfilexcluir, false)
+        );
+        
+        If(
+            !IsBlank(LookUp(funcoesUsuario, FUNCAO = "editor")),
+            Set(varPerfileditar, true),
+            Set(varPerfileditar, false)
+        );
+        If(
+            !IsBlank(LookUp(funcoesUsuario, FUNCAO = "leitor")),
+            Set(varPerfiller, true),
+            Set(varPerfiller, false)
+        );
+        
+        If(
+            !IsBlank(LookUp(funcoesUsuario, FUNCAO = "cadastrador")),
+            Set(varPerfilcadastro, true),
+            Set(varPerfilcadastro, false)
+        )
+
+    Container1 As groupContainer.manualLayoutContainer:
+        BorderThickness: =2
+        Height: =93
+        Width: =1366
+        ZIndex: =1
+
+        Image2 As image:
+            Height: =95
+            Image: ='Soluções (1)'
+            X: =1238
+            ZIndex: =1
+
+    Container2 As groupContainer.manualLayoutContainer:
+        BorderThickness: =2
+        Height: =87
+        Width: =1366
+        Y: =680
+        ZIndex: =2
+
+    Container3 As groupContainer.horizontalAutoLayoutContainer:
+        Height: =585
+        LayoutMode: =LayoutMode.Auto
+        Width: =1366
+        Y: =95
+        ZIndex: =3
+
+        Container5 As groupContainer.verticalAutoLayoutContainer:
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =2
+
+            Container7 As groupContainer.manualLayoutContainer:
+                BorderThickness: =2
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                ZIndex: =1
+
+                Label6 As label:
+                    Align: =Align.Center
+                    BorderThickness: =2
+                    FontWeight: =FontWeight.Semibold
+                    Height: =160
+                    Size: =30
+                    Text: ="Escolha uma ação para realizar dentro do banco de dados."
+                    Width: =1091
+                    X: =143
+                    Y: =96
+                    ZIndex: =2
+
+                Container11 As groupContainer.manualLayoutContainer:
+                    BorderThickness: =2
+                    Height: =163
+                    Visible: =varPerfilcadastro
+                    Width: =200
+                    X: =143
+                    Y: =295
+                    ZIndex: =3
+
+                    Button1 As button:
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =163
+                        OnSelect: =Navigate(create)
+                        Size: =23
+                        Text: ="Cadastrar um usuário"
+                        Visible: =varPerfilcadastro
+                        Width: =200
+                        ZIndex: =1
+
+                Container9 As groupContainer.manualLayoutContainer:
+                    BorderThickness: =2
+                    Height: =163
+                    Visible: =varPerfileditar
+                    Width: =200
+                    X: =438
+                    Y: =295
+                    ZIndex: =4
+
+                    Button2 As button:
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =163
+                        OnSelect: =Navigate(update)
+                        Size: =23
+                        Text: ="Editar registros "
+                        Visible: =varPerfileditar
+                        Width: =200
+                        ZIndex: =1
+
+                Container8 As groupContainer.manualLayoutContainer:
+                    BorderThickness: =2
+                    Height: =163
+                    Visible: =varPerfilexcluir
+                    Width: =200
+                    X: =1023
+                    Y: =295
+                    ZIndex: =5
+
+                    Button3 As button:
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =163
+                        OnSelect: =Navigate(delete)
+                        Size: =23
+                        Text: ="Excluir um usuário"
+                        Visible: =varPerfilexcluir
+                        Width: =200
+                        ZIndex: =1
+
+                Container11_5 As groupContainer.manualLayoutContainer:
+                    BorderThickness: =2
+                    Height: =163
+                    Visible: =varPerfiller
+                    Width: =200
+                    X: =715
+                    Y: =295
+                    ZIndex: =6
+
+                    Button1_5 As button:
+                        Color: =RGBA(0, 0, 0, 1)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =163
+                        OnSelect: =Navigate(read)
+                        Size: =23
+                        Text: ="Ler informações"
+                        Visible: =varPerfiller
+                        Width: =200
+                        ZIndex: =1
+

@@ -1,0 +1,51 @@
+inicial As screen:
+
+    Button4 As button:
+        BorderColor: =RGBA(0, 16, 96, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(136, 160, 209, 1)
+        Height: =117
+        OnSelect: |-
+            =If(
+               !IsBlank(LookUp(Cadastro_Kely, EMAIL = User().Email)),
+               Navigate(menu),
+               Navigate(semcadastro)
+            )
+        Size: =30
+        Text: ="Entrar"
+        Width: =622
+        X: =390
+        Y: =444
+        ZIndex: =1
+
+    Label1 As label:
+        Align: =Align.Center
+        BorderThickness: =2
+        FontWeight: =FontWeight.Bold
+        Height: =192
+        Size: =35
+        Text: ="Seja bem vindo à central de gerenciamento de banco de dados da SS Soluções"
+        Width: =1150
+        X: =113
+        Y: =153
+        ZIndex: =2
+
+    Container4 As groupContainer.manualLayoutContainer:
+        BorderThickness: =2
+        Height: =92
+        Width: =1366
+        ZIndex: =3
+
+        Image2_5 As image:
+            Height: =90
+            Image: ='Soluções (1)'
+            X: =1266
+            ZIndex: =1
+
+    Container6 As groupContainer.manualLayoutContainer:
+        BorderThickness: =2
+        Height: =80
+        Width: =1366
+        Y: =688
+        ZIndex: =4
+
